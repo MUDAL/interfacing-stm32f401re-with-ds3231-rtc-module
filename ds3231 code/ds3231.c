@@ -34,8 +34,8 @@ static uint8_t Hex_To_BCD(uint8_t hex)
 void DS3231_Init(void)
 {
 	GPIO_Alternate_Function_Init(GPIOB, (GPIO_OTYPER_OT8|GPIO_OTYPER_OT9), 
-															(GPIO_MODER_MODE8_1|GPIO_MODER_MODE9_1), 
-																REG_HIGH,(GPIO_AFRH_AFSEL8_2 | GPIO_AFRH_AFSEL9_2));
+					(GPIO_MODER_MODE8_1|GPIO_MODER_MODE9_1), 
+					REG_HIGH,(GPIO_AFRH_AFSEL8_2 | GPIO_AFRH_AFSEL9_2));
 	
 	I2C_Init(I2C1,I2C_CR2_FREQ_4,80,17);
 }
