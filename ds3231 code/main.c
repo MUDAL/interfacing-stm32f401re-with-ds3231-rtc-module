@@ -18,7 +18,7 @@ ds3231_t struct variable contains 4 members:
 
 period = DS3231_PERIOD_AM i.e. 0 for AM 
 period = DS3231_PERIOD_PM i.e. 1 for PM
-period = DS3231_PERIOD_NO_PERIOD i.e. 2 (no AM or PM due to 24 hour format)
+period = DS3231_NO_PERIOD i.e. 2 (no AM or PM due to 24 hour format)
 
 Watchdog timer is used to reset the system in case
 there's a software failure.
