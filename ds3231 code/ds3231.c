@@ -5,7 +5,9 @@
 
 /*
 The DS3231 uses Binary Coded Decimal (BCD) therefore all data must be
-converted to BCD before being sent to the DS3231 module.
+converted to BCD before being sent to the DS3231 module. Data read from
+the module is in BCD form hence it must be converted to HEX in order
+for the main application to use it for properly representing time.
 */
 
 enum Register_address
