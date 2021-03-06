@@ -66,6 +66,8 @@ void DS3231_Get_Time(ds3231_t* pTime)
 		1.)read AM/PM status of 12 hour clock
 		2.)if 12 hour format is the current clock format, 
 		read only bits 4-0 of ds3231 hour register*/
+		
+		//periodOfDay = DS3231_PERIOD_AM or DS3231_PERIOD_PM
 		periodOfDay = ( (hoursBCD & (1<<5)) >> 5 );
 		hoursBCD = (hoursBCD & 0x1F);
 	}
