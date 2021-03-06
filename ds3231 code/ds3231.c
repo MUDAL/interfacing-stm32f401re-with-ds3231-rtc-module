@@ -3,6 +3,11 @@
 #include "i2c.h"
 #include "ds3231.h"
 
+/*
+The DS3231 uses Binary Coded Decimal (BCD) therefore all data must be
+converted to BCD before being sent to the DS3231 module.
+*/
+
 enum Register_address
 {
 	DS3231_ADDR = 0x68,
