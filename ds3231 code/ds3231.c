@@ -21,6 +21,7 @@ enum Register_address
 static uint8_t BCD_To_Hex(uint8_t bcd)
 {
 	uint8_t hex;
+	
 	hex = (((bcd & 0xF0)>>4)*10) + (bcd&0x0F);
 	return hex;
 }
@@ -28,6 +29,7 @@ static uint8_t BCD_To_Hex(uint8_t bcd)
 static uint8_t Hex_To_BCD(uint8_t hex)
 {
 	uint8_t bcd;
+	
 	uint8_t multipleOfTen = 0;
 	while (hex >= 10)
 	{
@@ -104,6 +106,13 @@ void DS3231_Set_Time(uint8_t hour, uint8_t min)
 
 void DS3231_Set_12_Hour_Format(uint8_t periodOfDay)
 {
+	/*
+	12 hour mode is selected by setting bit 6 of 
+	hour register (see datasheet) i.e. 1<<6.
+	Setting bit 5 of hour register selects the
+	period of day as PM i.e. 1<<5 otherwise AM
+	is selected.
+	*/
 	uint8_t hoursBCD;
 	
 	I2C_Read_1Byte(I2C1, DS3231_ADDR, HOUR_REG_ADDR, &hoursBCD);
@@ -121,6 +130,10 @@ void DS3231_Set_12_Hour_Format(uint8_t periodOfDay)
 
 void DS3231_Set_24_Hour_Format(void)
 {
+	/*
+	Bits 5 and 6 of the hour register must be cleared for
+	24 hour format to be selected.
+	*/
 	uint8_t hoursBCD;
 	
 	I2C_Read_1Byte(I2C1, DS3231_ADDR, HOUR_REG_ADDR, &hoursBCD);
