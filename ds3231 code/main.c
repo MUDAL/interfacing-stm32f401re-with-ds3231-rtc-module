@@ -16,9 +16,9 @@ ds3231_t struct variable contains 4 members:
 3.)hours
 4.)period (AM or PM)
 
-period = DS3231_PERIOD_AM i.e. 0 for AM 
-period = DS3231_PERIOD_PM i.e. 1 for PM
-period = DS3231_NO_PERIOD i.e. 2 (no AM or PM due to 24 hour format)
+period = 0 for AM
+period = 1 for PM
+period = 2 (no AM or PM due to 24 hour format)
 
 Watchdog timer is used to reset the system in case
 there's a software failure.
@@ -35,14 +35,20 @@ int main(void)
 	IWDG_Init();
 	DS3231_Init();
 	
-	//DS3231_Set_12_Hour_Format(DS3231_PERIOD_AM);
+	//Example 1: Sets time to 10:45 pm
+	
+	//DS3231_Set_12_Hour_Format(DS3231_PERIOD_PM);
 	//DS3231_Set_Time(10,45);
+	
+	//Example 2: Sets time to 16:28
 	
 	//DS3231_Set_24_Hour_Format();
 	//DS3231_Set_Time(16,28);
 	
-	//DS3231_Set_12_Hour_Format(DS3231_PERIOD_PM);
-	//DS3231_Set_Time(11,35);
+	//Example 3: Sets time to 8:20 am
+	
+	//DS3231_Set_12_Hour_Format(DS3231_PERIOD_AM);
+	//DS3231_Set_Time(8,20);
 	
 	systick_t watchdogTimer;
 	watchdogTimer.start = SysTick_GetTick();
